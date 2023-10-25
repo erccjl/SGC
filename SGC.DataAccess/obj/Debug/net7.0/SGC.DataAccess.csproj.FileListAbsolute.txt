@@ -1,0 +1,12 @@
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\bin\Debug\net7.0\SGC.DataAccess.deps.json
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\bin\Debug\net7.0\SGC.DataAccess.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\bin\Debug\net7.0\SGC.DataAccess.pdb
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.AssemblyInfo.cs
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\refint\SGC.DataAccess.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\SGC.DataAccess.pdb
+C:\Users\ecampanelli\source\repos\SGC\SGC.DataAccess\obj\Debug\net7.0\ref\SGC.DataAccess.dll
