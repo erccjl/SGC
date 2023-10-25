@@ -1,0 +1,12 @@
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\bin\Debug\net7.0\SGC.Domain.deps.json
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\bin\Debug\net7.0\SGC.Domain.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\bin\Debug\net7.0\SGC.Domain.pdb
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.csproj.AssemblyReference.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.AssemblyInfoInputs.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.AssemblyInfo.cs
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\refint\SGC.Domain.dll
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\SGC.Domain.pdb
+C:\Users\ecampanelli\source\repos\SGC\SGC.Domain\obj\Debug\net7.0\ref\SGC.Domain.dll
