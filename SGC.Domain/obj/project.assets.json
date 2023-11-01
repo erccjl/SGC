@@ -8,26 +8,24 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ecampanelli\\.nuget\\packages\\": {}
+    "/Users/carlos/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ecampanelli\\source\\repos\\SGC\\SGC.Domain\\SGC.Domain.csproj",
+      "projectUniqueName": "/Users/carlos/Documents/_Sources/SGC/SGC.Domain/SGC.Domain.csproj",
       "projectName": "SGC.Domain",
-      "projectPath": "C:\\Users\\ecampanelli\\source\\repos\\SGC\\SGC.Domain\\SGC.Domain.csproj",
-      "packagesPath": "C:\\Users\\ecampanelli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ecampanelli\\source\\repos\\SGC\\SGC.Domain\\obj\\",
+      "projectPath": "/Users/carlos/Documents/_Sources/SGC/SGC.Domain/SGC.Domain.csproj",
+      "packagesPath": "/Users/carlos/.nuget/packages/",
+      "outputPath": "/Users/carlos/Documents/_Sources/SGC/SGC.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ecampanelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/carlos/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.308/RuntimeIdentifierGraph.json"
       }
     }
   }
