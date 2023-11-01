@@ -1,8 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using SGC.DataAccess.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+var conectionString = "server=localhost;user=root;password=41090;database=sgcprueba";
+
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
+
+builder.Services.AddDbContext<ConsorcioContext>(d => d.UseMySql(conectionString, serverVersion));
 
 var app = builder.Build();
 
@@ -24,4 +34,8 @@ app.MapControllerRoute(
 
 app.MapFallbackToFile("index.html");
 
+
+
+
 app.Run();
+
