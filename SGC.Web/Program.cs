@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using SGC.DataAccess.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-var conectionString = "server=localhost;user=root;password=41090;database=sgcprueba";
+var conectionString = builder.Configuration.GetConnectionString("mysql");
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
 
-builder.Services.AddDbContext<ConsorcioContext>(d => d.UseMySql(conectionString, serverVersion));
+builder.Services.AddDbContext<ConsorcioContext>(dbConection => dbConection.UseMySql(conectionString, serverVersion));
 
 var app = builder.Build();
 

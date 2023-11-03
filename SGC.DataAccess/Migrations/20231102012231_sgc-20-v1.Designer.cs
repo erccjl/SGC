@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SGC.DataAccess.Context;
 
@@ -10,9 +11,11 @@ using SGC.DataAccess.Context;
 namespace SGC.DataAccess.Migrations
 {
     [DbContext(typeof(ConsorcioContext))]
-    partial class ConsorcioContextModelSnapshot : ModelSnapshot
+    [Migration("20231102012231_sgc-20-v1")]
+    partial class sgc20v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
