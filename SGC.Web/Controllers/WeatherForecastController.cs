@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SGC.Application.Dtos;
+using SGC.Application.Service;
 
 namespace SGC.Web.Controllers
 {
@@ -11,16 +13,18 @@ namespace SGC.Web.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private IConsoricioService _consorcioService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController( IConsoricioService consoricioService)
         {
-            _logger = logger;
+            _consorcioService = consoricioService;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            _consorcioService.CreateConsorcio(new ConsorcioDto() { Descripcion = "hh" });
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -28,6 +32,23 @@ namespace SGC.Web.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
+        }
+
+        [HttpPost("createConsorcio")]
+        public async Task<IActionResult> CreateConsorcio(ConsorcioDto consorcioDto)
+        {
+            try
+            {
+                _consorcioService.CreateConsorcio(consorcioDto);
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
         }
     }
 }

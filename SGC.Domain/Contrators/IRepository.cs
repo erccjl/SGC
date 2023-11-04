@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SGC.Domain
 {
-    public interface IRepository<TEntity> where  TEntity : BaseEntity
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
         void Add(TEntity item);
 
@@ -25,5 +25,6 @@ namespace SGC.Domain
 
         IEnumerable<T> ExecuteQuery<T>(string sqlQuery, params object[] parameters);
 
+        void Save();
     }
 }

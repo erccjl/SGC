@@ -71,5 +71,9 @@ namespace SGC.DataAccess.Repository
             _context.Remove(item);
         }
 
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }

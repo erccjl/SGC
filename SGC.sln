@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGC.Domain", "SGC.Domain\SG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGC.DataAccess", "SGC.DataAccess\SGC.DataAccess.csproj", "{C13C9EC8-6502-4211-A033-C641EA40D3AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGC.Infraestructure", "SGC.Infraestructure\SGC.Infraestructure.csproj", "{2FD08B07-0EE8-447E-9257-44BF41A274A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGC.Infraestructure", "SGC.Infraestructure\SGC.Infraestructure.csproj", "{2FD08B07-0EE8-447E-9257-44BF41A274A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGC.Application", "SGC.Application\SGC.Application.csproj", "{3204B2D1-D0C5-4D44-A781-1D7548ACBEC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2FD08B07-0EE8-447E-9257-44BF41A274A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FD08B07-0EE8-447E-9257-44BF41A274A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FD08B07-0EE8-447E-9257-44BF41A274A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3204B2D1-D0C5-4D44-A781-1D7548ACBEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3204B2D1-D0C5-4D44-A781-1D7548ACBEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3204B2D1-D0C5-4D44-A781-1D7548ACBEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3204B2D1-D0C5-4D44-A781-1D7548ACBEC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
