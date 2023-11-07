@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using SGC.DataAccess.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
 
 var conectionString = "server=localhost;user=root;password=41090;database=sgcprueba";
 
@@ -23,10 +22,19 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        // options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        // options.RoutePrefix = string.Empty;
+    });
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",
@@ -34,8 +42,4 @@ app.MapControllerRoute(
 
 app.MapFallbackToFile("index.html");
 
-
-
-
 app.Run();
-
