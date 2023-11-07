@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 export class Home extends Component {
     static displayName = Home.name;
 
-    componentDidMount() {
-        this.test();
-    }
-
     render() {
         return (
             <div>
@@ -26,22 +22,5 @@ export class Home extends Component {
                 <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
             </div>
         );
-    }
-
-    async test() {
-        fetch('/api/consorcio/createConsorcio', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // Ajusta el tipo de contenido según sea necesario
-            },
-            body: JSON.stringify({
-                "nombre": "Primero",
-                "descripcion": "blabla",
-                "direccion": "sss",
-                "tipo": 1
-            }),
-        }).then(response => {
-            console.log(response);
-        });
     }
 }

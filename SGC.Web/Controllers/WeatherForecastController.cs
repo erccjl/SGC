@@ -5,7 +5,7 @@ using SGC.Application.Service;
 namespace SGC.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -23,8 +23,6 @@ namespace SGC.Web.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            _consorcioService.CreateConsorcio(new ConsorcioDto() { Descripcion = "hh" });
-
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -32,7 +30,6 @@ namespace SGC.Web.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
-
         }
 
         [HttpPost("createConsorcio")]
