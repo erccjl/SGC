@@ -24,8 +24,9 @@ namespace SGC.Application.Service
         public void CreateConsorcio(ConsorcioDto consorcioDto)
         {
            
-            //var consorcio = _mapper.Map<Consorcio>(consorcioDto);
-           var consorcio =  new Consorcio() { Descripcion = "hh", UsuarioId= 1 };
+            var consorcio = _mapper.Map<Consorcio>(consorcioDto);
+            consorcio.CreatedDate = DateTime.Now;
+           //var consorcio =  new Consorcio() { Descripcion = "hh", UsuarioId= 1 };
             _consorcioRepository.Add(consorcio);
             _consorcioRepository.Save();
         }

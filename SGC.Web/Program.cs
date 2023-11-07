@@ -20,7 +20,7 @@ var conectionString = builder.Configuration.GetConnectionString("mysql");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
 
 builder.Services.AddDbContext<ConsorcioContext>(dbConection => dbConection.UseMySql(conectionString, serverVersion));
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 builder.Services.AddScoped<IConsoricioService, ConsorcioService>();

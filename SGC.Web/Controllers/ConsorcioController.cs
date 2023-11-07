@@ -16,8 +16,23 @@ namespace SGC.Web.Controllers
         }
 
 
-        [HttpPost("createConsorcio")]
-        public async Task<IActionResult> CreateConsorcio([FromBody] ConsorcioDto model)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] ConsorcioDto model)
+        {
+            try
+            {
+                _consorcioService.CreateConsorcio(model);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpPost("edit")]
+        public async Task<IActionResult> Edit([FromBody] ConsorcioDto model)
         {
             return Ok("Consorcio creado exitosamente");
             //try
