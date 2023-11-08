@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SGC.DataAccess.Context;
 using SGC.Domain;
-using SGC.Domain.Contrators;
 using SGC.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGC.DataAccess.Repository
 {
@@ -24,9 +18,11 @@ namespace SGC.DataAccess.Repository
             _dbSet = _context.Set<TEntity>();
         }
 
-        public void Add(TEntity item)
+        public TEntity Add(TEntity item)
         {
             _dbSet.Add(item);
+            Save();
+            return item;
         }
 
         public void Update(TEntity item)

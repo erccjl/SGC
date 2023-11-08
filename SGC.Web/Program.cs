@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SGC.Application.Mapper;
 using SGC.Application.Service;
 using SGC.DataAccess.Context;
 using SGC.DataAccess.Repository;
@@ -17,10 +18,10 @@ var conectionString = builder.Configuration.GetConnectionString("mysql");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
 
 builder.Services.AddDbContext<ConsorcioContext>(dbConection => dbConection.UseMySql(conectionString, serverVersion));
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(ConsorcioProfile));
 
 
-builder.Services.AddScoped<IConsoricioService, ConsorcioService>();
+builder.Services.AddScoped<IConsorcioService, ConsorcioService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 

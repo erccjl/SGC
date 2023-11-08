@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SGC.Application.Service
 {
-    public class ConsorcioService : IConsoricioService
+    public class ConsorcioService : IConsorcioService
     {
         private readonly IRepository<Consorcio> _consorcioRepository;
         private readonly IMapper _mapper;
@@ -21,14 +21,15 @@ namespace SGC.Application.Service
             _mapper = mapper;
         }
 
-        public void CreateConsorcio(ConsorcioDto consorcioDto)
+        public ConsorcioDto CreateConsorcio(ConsorcioDto consorcioDto)
         {
-           
-            var consorcio = _mapper.Map<Consorcio>(consorcioDto);
-            consorcio.CreatedDate = DateTime.Now;
-           //var consorcio =  new Consorcio() { Descripcion = "hh", UsuarioId= 1 };
-            _consorcioRepository.Add(consorcio);
-            _consorcioRepository.Save();
+            var newConsorcio = _mapper.Map<Consorcio>(consorcioDto);
+            newConsorcio.CreatedDate = DateTime.Now;
+            newConsorcio.UpdatedDate = DateTime.Now;
+            newConsorcio.UsuarioId = 1;
+            var consorcio =_consorcioRepository.Add(newConsorcio);
+
+            return _mapper.Map<ConsorcioDto>(consorcio);
         }
 
     }

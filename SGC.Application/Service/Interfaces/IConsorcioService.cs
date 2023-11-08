@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SGC.Application.Service
 {
-    public interface IConsoricioService
+    public interface IConsorcioService
     {
-        void CreateConsorcio(ConsorcioDto consorcio);
+        ConsorcioDto CreateConsorcio(ConsorcioDto consorcio);
     }
 }

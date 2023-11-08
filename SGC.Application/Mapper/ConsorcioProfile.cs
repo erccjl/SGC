@@ -13,7 +13,9 @@ namespace SGC.Application.Mapper
     {
         public ConsorcioProfile()
         {
-            CreateMap<Consorcio, ConsorcioDto>().ReverseMap();
+            CreateMap<ConsorcioDto, Consorcio>()
+                .ForMember(c => c.CreatedDate, option => option.Ignore())
+                .ReverseMap();
         }
     }
 }

@@ -3,14 +3,11 @@ using SGC.Domain.Enums;
 
 namespace SGC.Application.Dtos
 {
-    public class ConsorcioDto 
+    public class ConsorcioDto : BaseEntityDto
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Direccion { get; set; }
         public TipoConsorcio Tipo { get; set; }
-        public int UsuarioId { get; set; }
-        public DateTime? UpdatedDate { get; set; }
-        public BaseState State { get; set; }
     }
 }

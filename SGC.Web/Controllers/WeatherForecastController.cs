@@ -13,11 +13,11 @@ namespace SGC.Web.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private IConsoricioService _consorcioService;
+        private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController( IConsoricioService consoricioService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
-            _consorcioService = consoricioService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -30,22 +30,6 @@ namespace SGC.Web.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
-        }
-
-        [HttpPost("createConsorcio")]
-        public async Task<IActionResult> CreateConsorcio(ConsorcioDto consorcioDto)
-        {
-            try
-            {
-                _consorcioService.CreateConsorcio(consorcioDto);
-                return Ok(true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
         }
     }
 }

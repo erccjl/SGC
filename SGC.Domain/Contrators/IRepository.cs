@@ -1,17 +1,11 @@
-﻿using SGC.Domain.Contrators;
-using SGC.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SGC.Domain.Entities;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SGC.Domain
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        void Add(TEntity item);
+        TEntity Add(TEntity item);
 
         void Remove(TEntity item);
 

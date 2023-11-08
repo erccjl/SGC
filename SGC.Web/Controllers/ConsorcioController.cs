@@ -1,18 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SGC.Application.Dtos;
 using SGC.Application.Service;
+using SGC.Domain.Entities;
 
 namespace SGC.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ConsorcioController : ControllerBase
     {
-        private readonly IConsoricioService _consorcioService;
+        private readonly IConsorcioService _consorcioService;
+        private readonly ILogger<ConsorcioController> _logger;
 
-        public ConsorcioController(IConsoricioService consoricioService)
+        public ConsorcioController(IConsorcioService consoricioService, ILogger<ConsorcioController> logger)
         {
             _consorcioService = consoricioService;
+            _logger = logger;
         }
 
 
@@ -21,8 +25,8 @@ namespace SGC.Web.Controllers
         {
             try
             {
-                _consorcioService.CreateConsorcio(model);
-                return Ok();
+                var consorcio = _consorcioService.CreateConsorcio(model);
+                return Ok(consorcio);
             }
             catch (Exception ex)
             {
