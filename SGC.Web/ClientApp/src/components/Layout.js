@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import { NavMenu } from './NavMenu';
+import { useState } from 'react';
+import Sidebar from './Sidebar';
+import Box from '@mui/material/Box';
 
-export class Layout extends Component {
-  static displayName = Layout.name;
+const Layout = () => {
+  const [open, setOpen] = useState(true);
 
-  render() {
-    return (
-      <div>
-        <NavMenu />
-        <Container tag="main">
-          {this.props.children}
-        </Container>
-      </div>
-    );
-  }
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <Box sx={{ display: 'flex' }}>
+        <Sidebar open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
+      </Box>
+    </>
+  );
 }
+
+export default Layout;
