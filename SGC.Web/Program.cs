@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using SGC.Application.Mapper;
+using SGC.Application.Service;
 using SGC.DataAccess.Context;
+using SGC.DataAccess.Repository;
+using SGC.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +11,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
-var conectionString = "server=localhost;user=root;password=41090;database=sgcprueba";
+builder.Services.AddControllersWithViews();
+
+var conectionString = builder.Configuration.GetConnectionString("mysql");
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
 
-builder.Services.AddDbContext<ConsorcioContext>(d => d.UseMySql(conectionString, serverVersion));
+builder.Services.AddDbContext<ConsorcioContext>(dbConection => dbConection.UseMySql(conectionString, serverVersion));
+builder.Services.AddAutoMapper(typeof(ConsorcioProfile));
+
+
+builder.Services.AddScoped<IConsorcioService, ConsorcioService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
 
 var app = builder.Build();
 
@@ -35,7 +47,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");

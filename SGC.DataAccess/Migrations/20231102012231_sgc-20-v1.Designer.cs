@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SGC.DataAccess.Context;
 
@@ -10,9 +11,11 @@ using SGC.DataAccess.Context;
 namespace SGC.DataAccess.Migrations
 {
     [DbContext(typeof(ConsorcioContext))]
-    partial class ConsorcioContextModelSnapshot : ModelSnapshot
+    [Migration("20231102012231_sgc-20-v1")]
+    partial class sgc20v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,10 +266,27 @@ namespace SGC.DataAccess.Migrations
                     b.Property<string>("Contraseña")
                         .HasColumnType("longtext");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("State")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Usuarios");
                 });
@@ -397,6 +417,15 @@ namespace SGC.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Consorcio");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("SGC.Domain.Entities.Usuario", b =>
+                {
+                    b.HasOne("SGC.Domain.Entities.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
 
                     b.Navigation("Usuario");
                 });

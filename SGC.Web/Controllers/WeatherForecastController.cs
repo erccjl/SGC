@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SGC.Application.Dtos;
+using SGC.Application.Service;
 
 namespace SGC.Web.Controllers
 {
