@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '../routes/Home'
-import Consorcio from '../routes/Consorcio';
+import Home from '../features/Home'
+import Consorcio from '../features/consorcio/Consorcio';
 
 const AppRouter = () => {
     return (
