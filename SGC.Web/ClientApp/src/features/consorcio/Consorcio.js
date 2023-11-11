@@ -2,6 +2,7 @@ import { Box, Paper } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConsorcio, removeConsorcio, selectConsorcios } from './consorciosSlice';
 import { useState } from 'react';
+import ConsorcioForm from './ConsorcioForm';
 
 const initialState = {
     id: 0,
@@ -27,11 +28,11 @@ const Consorcio = () => {
 
     return (
         <>
-            <Box sx={{display: 'flex'}}>
-                <Paper>
-                    componente consorcio
-                </Paper>
-            </Box>
+            <Paper>
+                <Box px={3} py={2}>
+                    <ConsorcioForm></ConsorcioForm>
+                </Box>
+            </Paper>
         </>);
 }
 
