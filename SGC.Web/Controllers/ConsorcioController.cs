@@ -30,7 +30,7 @@ namespace SGC.Web.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
 
@@ -38,16 +38,15 @@ namespace SGC.Web.Controllers
         [HttpPost("edit")]
         public async Task<IActionResult> Edit([FromBody] ConsorcioDto model)
         {
-            return Ok("Consorcio creado exitosamente");
-            //try
-            //{
-            //    _consorcioService.CreateConsorcio(consorcioDto);
-            //    return Ok();
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            try
+            {
+                var consorcio = _consorcioService.EditConsorcio(model);
+                return Ok(consorcio);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
