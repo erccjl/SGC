@@ -67,5 +67,18 @@ namespace SGC.Application.Service
         {
             return _consorcioRepository.GetFiltered(c => c.Nombre == consorcio).Any();
         }
+
+        public List<ConsorcioDto> GetAllConsorcios()
+        {
+            var consorciosDto = new List<ConsorcioDto>();
+            var consorcios = _consorcioRepository.GetAll().ToList();
+
+            foreach(var consorcio in consorcios)
+            {
+                consorciosDto.Add(_mapper.Map<ConsorcioDto>(consorcio));
+            }
+
+            return consorciosDto;
+        }
     }
 }
