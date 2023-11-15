@@ -10,5 +10,6 @@ namespace SGC.Application.Service
     public interface IConsorcioService
     {
         ConsorcioDto CreateConsorcio(ConsorcioDto consorcio);
+        ConsorcioDto EditConsorcio(ConsorcioDto model);
     }
 }

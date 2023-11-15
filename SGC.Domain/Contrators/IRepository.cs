@@ -9,7 +9,7 @@ namespace SGC.Domain
 
         void Remove(TEntity item);
 
-        void Update(TEntity item);
+        TEntity Update(TEntity item);
 
         TEntity Get(int id);
 

@@ -8,6 +8,8 @@ namespace SGC.Domain.Entities
         public string Descripcion { get; set; }
         public string Direccion { get; set; }
         public TipoConsorcio Tipo { get; set; }
+        public string Encabezado { get; set; }
+        public string Contenido { get; set; }
 
         public virtual ICollection<Unidad> Unidades { get; set; }
     }
