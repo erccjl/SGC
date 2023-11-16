@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { consorciosMoqup } from '../../data/consorcios';
 
 export const consorciosSlice =  createSlice ({
     name: 'consorcios',
     initialState: {
-        consorcios: []
+        consorcios: consorciosMoqup
     },
     reducers: {
         addConsorcio: (state, action) => {

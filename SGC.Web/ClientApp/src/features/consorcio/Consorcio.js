@@ -1,39 +1,34 @@
-import { Box, Paper } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { addConsorcio, removeConsorcio, selectConsorcios } from './consorciosSlice';
-import { useState } from 'react';
-import ConsorcioForm from './ConsorcioForm';
+import { Box } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom"
+import ConsorcioForm from "./ConsorcioForm";
 
 const initialState = {
     id: 0,
     nombre: '',
     descripcion: '',
     direccion: '',
-    tipo: 0
+    tipo: 0,
+    encabezado: '',
+    contenido: ''
 }
 
-const Consorcio = () => {
-    const dispatch = useDispatch();
-    const consorcios = useSelector(selectConsorcios);
-    const [newConsorcio, setNewConsorcio] = useState(initialState);
+export const Consorcio = () => {
+    let { consorcioId } = useParams();
+    const navigate = useNavigate();
 
-    const handleAddConsorcio = () => {
-        dispatch(addConsorcio(newConsorcio));
-        setNewConsorcio(initialState);
-    };
-
-    const handleRemoveConsorcio = (id) => {
-        dispatch(removeConsorcio(id));
+    const handleSave = (consorcio) => {
+        console.log(consorcio);
+        // dispatch(addConsorcio(newConsorcio));
+        // setNewConsorcio(initialState);
     }
 
-    return (
-        <>
-            <Paper>
-                <Box px={3} py={2}>
-                    <ConsorcioForm></ConsorcioForm>
-                </Box>
-            </Paper>
-        </>);
-}
+    const handleCancel = () => {
+        navigate(-1)
+    }
 
-export default Consorcio;
+    return (<>
+        <Box sx={{ width: '100%' }}>
+            <ConsorcioForm consorcio={initialState} handleSave={handleSave} handleCancel={handleCancel} />
+        </Box>
+    </>)
+}
