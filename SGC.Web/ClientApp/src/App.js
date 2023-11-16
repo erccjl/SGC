@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const theme = createTheme({
   palette: {
@@ -43,9 +45,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <Layout />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Layout />
+        </ThemeProvider>
+      </Provider>
     );
   }
 }

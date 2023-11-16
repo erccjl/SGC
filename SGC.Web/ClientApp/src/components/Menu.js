@@ -20,29 +20,31 @@ const items = [
     }
 ];
 
-const StyledListItemButton = styled(ListItemButton)(({ theme, isActive }) => ({
-    backgroundColor: isActive ? theme.palette.action.selected : 'inherit',
-    borderRadius: '8px',
-}));
+const StyledListItemButton = styled(ListItemButton, { shouldForwardProp: (prop) => prop !== 'isActive' })(
+    ({ theme, isActive }) => ({
+        backgroundColor: isActive ? theme.palette.action.selected : 'inherit',
+        borderRadius: '8px',
+    }),
+);
+
 
 const Menu = () => {
     const location = useLocation();
 
     const getMenu = (item, index) => {
         const isActive = location.pathname === item.path;
-        return (<>
+        return (
             <ListItem key={index} disablePadding>
                 <StyledListItemButton component={NavLink}
                     to={item.path}
                     isActive={isActive}
-                    activeClassName="active-link">
+                    activeclassname="active-link">
                     <ListItemIcon>
                         {item.icon}
                     </ListItemIcon>
                     <ListItemText primary={item.name} />
                 </StyledListItemButton>
-            </ListItem>
-        </>)
+            </ListItem>)
     }
     return (<>
         <Divider />
