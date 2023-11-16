@@ -20,8 +20,8 @@ namespace SGC.Web.Controllers
         }
 
 
-        [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] ConsorcioDto model)
+        [HttpPost("createConsorcio")]
+        public async Task<IActionResult> CreateConsorcio([FromBody] ConsorcioDto model)
         {
             try
             {
@@ -30,24 +30,37 @@ namespace SGC.Web.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
 
 
-        [HttpPost("edit")]
-        public async Task<IActionResult> Edit([FromBody] ConsorcioDto model)
+        [HttpPost("editConsorcio")]
+        public async Task<IActionResult> EditConsorcio([FromBody] ConsorcioDto model)
         {
-            return Ok("Consorcio creado exitosamente");
-            //try
-            //{
-            //    _consorcioService.CreateConsorcio(consorcioDto);
-            //    return Ok();
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            try
+            {
+                var consorcio = _consorcioService.EditConsorcio(model);
+                return Ok(consorcio);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("getAllConsorcios")]
+        public async Task<IActionResult> GetAllConsorcios()
+        {
+            try
+            {
+                var consorcio = _consorcioService.GetAllConsorcios();
+                return Ok(consorcio);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

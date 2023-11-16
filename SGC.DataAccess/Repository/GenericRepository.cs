@@ -25,10 +25,12 @@ namespace SGC.DataAccess.Repository
             return item;
         }
 
-        public void Update(TEntity item)
+        public TEntity Update(TEntity item)
         {
             _dbSet.Attach(item);
             _context.Entry(item).State = EntityState.Modified;
+            Save();
+            return item;
         }
 
         public TEntity Get(int id)
