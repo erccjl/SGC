@@ -7,6 +7,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Navbar from './Navbar';
 import Menu from './Menu';
 import AppRouter from '../router/AppRouter';
+import { Box } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -14,6 +15,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         flexGrow: 1,
         padding: theme.spacing(3),
+        backgroundColor: '#F8F8F8',
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -26,6 +28,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
             }),
             marginLeft: 0,
         }),
+        height: 'auto',
+        minHeight: '100vh'
     }),
 );
 
@@ -37,7 +41,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-const Sidebar = ({open, handleDrawerOpen, handleDrawerClose}) => {
+const Sidebar = ({ open, handleDrawerOpen, handleDrawerClose }) => {
     const theme = useTheme();
 
     return (<>
@@ -66,7 +70,9 @@ const Sidebar = ({open, handleDrawerOpen, handleDrawerClose}) => {
         </Drawer>
         <Main open={open}>
             <DrawerHeader />
-            <AppRouter />
+            <Box sx={{backgroundColor:'#FFFFFF', overflow: 'auto', padding: '30px'}}>
+                <AppRouter />
+            </Box>
         </Main>
     </>);
 }

@@ -1,21 +1,20 @@
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import HomeIcon from '@mui/icons-material/Home';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { useLocation } from 'react-router-dom';
-
 import { routes } from '../constants/routes'
 
 const items = [
     {
         name: 'Home',
-        icon: <InboxIcon />,
+        icon: <HomeIcon />,
         path: routes.HOME
     },
     {
         name: 'Consorcios',
-        icon: <MailIcon />,
+        icon: <LocationCityIcon />,
         path: routes.CONSORCIOS
     }
 ];
