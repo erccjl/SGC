@@ -1,21 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { removeConsorcio, selectConsorcios } from './consorciosSlice';
-import ConsorcioTable from './ConsorcioTable';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Alert, Box, Button, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getAllConsorciosApi } from '../../services/consorcio';
+import ConsorcioTable from '../../components/Consorcio/ConsorcioTable';
 
 const Consorcios = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const consorcioId = 1;
     const consorcios = useSelector(selectConsorcios);
 
     const handleEdit = (id) => {
-        console.log('editar', id);
+        return navigate(`/consorcios/edit/${id}`)
     }
 
     const handleAdd = () => {
-        return navigate(`/consorcios/${consorcioId}`)
+        return navigate(`/consorcios/add`)
     };
 
     const handleRemove = (id) => {
@@ -26,6 +27,10 @@ const Consorcios = () => {
     const handleAddUnits = (id) => {
         console.log('Agregar unidades ', id);
     }
+
+    useEffect(() => {
+        dispatch(getAllConsorciosApi());
+    }, []);
 
     return (
         <>
@@ -56,11 +61,17 @@ const Consorcios = () => {
             <br />
 
             <Box sx={{ width: '100%' }}>
-                <ConsorcioTable
-                    consorcios={consorcios}
-                    handleEdit={handleEdit}
-                    handleRemove={handleRemove}
-                    handleAddUnits={handleAddUnits} />
+                {
+                    consorcios.length > 0 ? 
+                    (<ConsorcioTable
+                        consorcios={consorcios}
+                        handleEdit={handleEdit}
+                        handleRemove={handleRemove}
+                        handleAddUnits={handleAddUnits} />) 
+                        : 
+                        (<Alert severity="info">No hay Consorcios cargados</Alert>)
+                }
+                
             </Box>
         </>);
 }

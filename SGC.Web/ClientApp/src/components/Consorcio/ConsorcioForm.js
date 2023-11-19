@@ -3,7 +3,7 @@ import { useForm, Controller, useFormContext } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useTheme } from '@emotion/react';
-import { TextArea } from '../../components/TextArea';
+import { TextArea } from '../TextArea';
 
 const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
     const theme = useTheme();
@@ -93,8 +93,8 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                         name='tipo'
                         render={({ field }) => (
                             <RadioGroup row {...field}>
-                                <FormControlLabel value={0} control={<Radio />} label='Edificio' />
-                                <FormControlLabel value={1} control={<Radio />} label='Barrio Cerrado' />
+                                <FormControlLabel value={1} control={<Radio />} label='Edificio' />
+                                <FormControlLabel value={2} control={<Radio />} label='Barrio Cerrado' />
                             </RadioGroup>
                         )}
                     />

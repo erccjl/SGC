@@ -9,6 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ControlPoint from '@mui/icons-material/ControlPoint';
 import { getComparator, stableSort } from '../../utils/orderList';
+import { getConsorcioTipoNombre } from '../../utils/castEnum';
 
 const headCells = [
     {
@@ -130,7 +131,7 @@ export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, h
                                 >
                                     <TableCell padding="normal"> {row.nombre}</TableCell>
                                     <TableCell>{row.direccion}</TableCell>
-                                    <TableCell>{row.tipo}</TableCell>
+                                    <TableCell>{getConsorcioTipoNombre(row.tipo)}</TableCell>
                                     <TableCell>
                                         <Tooltip title='Editar' placement="top">
                                             <IconButton onClick={e => handleEdit(row.id)}>

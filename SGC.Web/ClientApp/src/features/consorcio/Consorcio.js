@@ -1,20 +1,13 @@
 import { Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom"
-import ConsorcioForm from "./ConsorcioForm";
-
-const initialState = {
-    id: 0,
-    nombre: '',
-    descripcion: '',
-    direccion: '',
-    tipo: 0,
-    encabezado: '',
-    contenido: ''
-}
+import ConsorcioForm from "../../components/Consorcio/ConsorcioForm";
+import { useSelector } from "react-redux";
+import { selectConsorcio } from "./consorciosSlice";
 
 export const Consorcio = () => {
     let { consorcioId } = useParams();
     const navigate = useNavigate();
+    const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
 
     const handleSave = (consorcio) => {
         console.log(consorcio);
@@ -28,7 +21,7 @@ export const Consorcio = () => {
 
     return (<>
         <Box sx={{ width: '100%' }}>
-            <ConsorcioForm consorcio={initialState} handleSave={handleSave} handleCancel={handleCancel} />
+            <ConsorcioForm consorcio={consorcio} handleSave={handleSave} handleCancel={handleCancel} />
         </Box>
     </>)
 }
