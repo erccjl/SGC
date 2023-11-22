@@ -3,6 +3,8 @@ import Layout from './components/Layout';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import store from './store';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const theme = createTheme({
   palette: {
@@ -47,7 +49,8 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <Layout />
+            <Layout />
+            <ToastContainer autoClose={false} draggable={false} />
         </ThemeProvider>
       </Provider>
     );

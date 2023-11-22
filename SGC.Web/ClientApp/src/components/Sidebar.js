@@ -70,7 +70,7 @@ const Sidebar = ({ open, handleDrawerOpen, handleDrawerClose }) => {
         </Drawer>
         <Main open={open}>
             <DrawerHeader />
-            <Box sx={{backgroundColor:'#FFFFFF', overflow: 'auto', padding: '30px'}}>
+            <Box sx={{ backgroundColor: '#FFFFFF', overflow: 'auto', padding: '30px' }}>
                 <AppRouter />
             </Box>
         </Main>
