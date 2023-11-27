@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { removeConsorcio, selectConsorcios } from './consorciosSlice';
+import { selectConsorcios } from './consorciosSlice';
 import { Alert, Box, Button, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getAllConsorciosApi } from '../../services/consorcio';
+import { getConsorciosApi } from '../../services/consorcio';
 import ConsorcioTable from '../../components/Consorcio/ConsorcioTable';
 
 const Consorcios = () => {
@@ -21,7 +21,6 @@ const Consorcios = () => {
 
     const handleRemove = (id) => {
         console.log('eliminar ', id)
-        // dispatch(removeConsorcio(id));
     }
 
     const handleAddUnits = (id) => {
@@ -29,7 +28,7 @@ const Consorcios = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllConsorciosApi());
+        dispatch(getConsorciosApi());
     }, []);
 
     return (
@@ -62,16 +61,16 @@ const Consorcios = () => {
 
             <Box sx={{ width: '100%' }}>
                 {
-                    consorcios.length > 0 ? 
-                    (<ConsorcioTable
-                        consorcios={consorcios}
-                        handleEdit={handleEdit}
-                        handleRemove={handleRemove}
-                        handleAddUnits={handleAddUnits} />) 
-                        : 
+                    consorcios.length > 0 ?
+                        (<ConsorcioTable
+                            consorcios={consorcios}
+                            handleEdit={handleEdit}
+                            handleRemove={handleRemove}
+                            handleAddUnits={handleAddUnits} />)
+                        :
                         (<Alert severity="info">No hay Consorcios cargados</Alert>)
                 }
-                
+
             </Box>
         </>);
 }

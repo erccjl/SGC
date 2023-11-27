@@ -1,6 +1,8 @@
 
 export const urls = {
-    getAllConsorcios : `/consorcio/getAllConsorcios`
+    getConsorciosAPI : `/consorcio/getAllConsorcios`,
+    postConsorcioAPI: `/consorcio/CreateConsorcio`,
+    putConsorcioAPI: `/consorcio/editConsorcio`
 };
 
 

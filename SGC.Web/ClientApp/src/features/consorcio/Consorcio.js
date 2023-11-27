@@ -1,22 +1,30 @@
 import { Box } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom"
 import ConsorcioForm from "../../components/Consorcio/ConsorcioForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectConsorcio } from "./consorciosSlice";
+import { postConsorcioApi, putConsorcioApi } from "../../services/consorcio";
 
 export const Consorcio = () => {
+    const dispatch = useDispatch();
     let { consorcioId } = useParams();
     const navigate = useNavigate();
     const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
 
     const handleSave = (consorcio) => {
-        console.log(consorcio);
-        // dispatch(addConsorcio(newConsorcio));
-        // setNewConsorcio(initialState);
+        if (consorcioId)
+            dispatch(putConsorcioApi(consorcio));
+        else
+            dispatch(postConsorcioApi(consorcio));
+        goBack();
     }
 
     const handleCancel = () => {
-        navigate(-1)
+        goBack();
+    }
+
+    const goBack = () => {
+        navigate(-1);
     }
 
     return (<>

@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ErrorToast } from './components/Toast/Toast';
 
 const clientInstance = axios.create({
     baseURL: 'api',
-    timeout: 1000,
+    timeout: 8000,
 });
 
 clientInstance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
-    toast.error(error.message, { position: toast.POSITION.BOTTOM_RIGHT, theme: "colored" });
+    ErrorToast(error.message);
     return Promise.reject(error);
 })
 
