@@ -24,7 +24,7 @@ const Consorcios = () => {
     }
 
     const handleAddUnits = (id) => {
-        console.log('Agregar unidades ', id);
+        return navigate(`/consorcios/${id}/unidades`);
     }
 
     useEffect(() => {
@@ -61,14 +61,13 @@ const Consorcios = () => {
 
             <Box sx={{ width: '100%' }}>
                 {
-                    consorcios.length > 0 ?
-                        (<ConsorcioTable
+                    consorcios.length > 0
+                        ? (<ConsorcioTable
                             consorcios={consorcios}
                             handleEdit={handleEdit}
                             handleRemove={handleRemove}
                             handleAddUnits={handleAddUnits} />)
-                        :
-                        (<Alert severity="info">No hay Consorcios cargados</Alert>)
+                        : (<Alert severity="info">No hay Consorcios cargados</Alert>)
                 }
 
             </Box>

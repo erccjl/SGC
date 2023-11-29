@@ -1,7 +1,6 @@
 import { urls } from '../constants/api';
 import { addConsorcio, editConsorcio, setConsorcios } from '../features/consorcio/consorciosSlice';
 import clientInstance from '../client';
-import { toast } from 'react-toastify';
 import { SuccessToast } from '../components/Toast/Toast';
 
 export const getConsorciosApi = () => (dispatch) => {
@@ -18,7 +17,7 @@ export const postConsorcioApi = (consorcio) => (dispatch) => {
         .post(urls.postConsorcioAPI, consorcio)
         .then(response => {
             if (response.data) {
-                toast.success('Consorcio creado con éxito!', { position: toast.POSITION.BOTTOM_RIGHT, theme: "colored", autoClose: 2000 });
+                SuccessToast('Consorcio creado con éxito!');
                 dispatch(addConsorcio(response.data));
             }
         })
