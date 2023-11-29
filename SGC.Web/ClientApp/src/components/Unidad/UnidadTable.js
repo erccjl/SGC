@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PropTypes from 'prop-types';
 import { CustomTable } from '../Table/CustomTable';
+import { styled } from '@mui/material/styles';
 
 const headCells = [
     {
@@ -26,16 +27,24 @@ const headCells = [
     },
 ];
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
+
 export const UnidadTable = (props) => {
     const { unidades, handleEdit, handleRemove } = props;
 
     const getRow = (row) => {
         return (
-            <TableRow
-                hover
+            <StyledTableRow
                 tabIndex={-1}
                 key={row.id}
-                sx={{ cursor: 'pointer' }}
             >
                 <TableCell padding="normal"> {row.codigo}</TableCell>
                 <TableCell>{row.porcentaje}</TableCell>
@@ -52,11 +61,11 @@ export const UnidadTable = (props) => {
                         </IconButton>
                     </Tooltip>
                 </TableCell>
-            </TableRow>
+            </StyledTableRow>
         );
     }
 
-    return(
+    return (
         <Paper sx={{ width: '100%', mb: 2 }}>
             <CustomTable items={unidades} getRow={getRow} headCells={headCells} />
         </Paper>

@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ControlPoint from '@mui/icons-material/ControlPoint';
 import { getConsorcioTipoNombre } from '../../utils/castEnum';
 import { CustomTable } from '../Table/CustomTable';
+import { styled } from '@mui/material/styles';
 
 const headCells = [
     {
@@ -27,15 +28,23 @@ const headCells = [
     },
 ];
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
+
 export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, handleAddUnits }) {
 
     const getRow = (row) => {
         return (
-            <TableRow
-                hover
+            <StyledTableRow
                 tabIndex={-1}
                 key={row.id}
-                sx={{ cursor: 'pointer' }}
             >
                 <TableCell padding="normal"> {row.nombre}</TableCell>
                 <TableCell>{row.direccion}</TableCell>
@@ -57,7 +66,7 @@ export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, h
                         </IconButton>
                     </Tooltip>
                 </TableCell>
-            </TableRow>
+            </StyledTableRow>
         );
     }
 

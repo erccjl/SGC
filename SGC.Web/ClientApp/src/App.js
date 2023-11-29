@@ -9,19 +9,19 @@ import { ToastContainer } from "react-toastify";
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2196f3', // color primario
-      dark: '#1769aa', // tono oscuro del color primario
-      light: '#4dabf5', // tono claro del color primario
+      main: '#458e95', // color primario
+      dark: '#3c757e', // tono oscuro del color primario
+      light: '#bfe0e2', // tono claro del color primario
     },
     secondary: {
-      main: '#ff4081', // color secundario
-      dark: '#c51162', // tono oscuro del color secundario
-      light: '#ff79b0', // tono claro del color secundario
+      main: '#94c9cc', // color secundario
+      dark: '#ddeff0', // tono oscuro del color secundario
+      light: '#325158', // tono claro del color secundario
     },
     error: {
-      main: '#f44336', // color de error
-      dark: '#d32f2f', // tono oscuro del color de error
-      light: '#e57373', // tono claro del color de error
+      main: '#f24141', // color de error
+      dark: '#d61f1f', // tono oscuro del color de error
+      light: '#ffc9c9', // tono claro del color de error
     },
     warning: {
       main: '#ff9800', // color de advertencia

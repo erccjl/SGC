@@ -16,11 +16,11 @@ export const Unidades = () => {
     const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
 
     const handleEdit = (id) => {
-        // return navigate(`/consorcios/edit/${id}`)
+        return navigate(`/consorcios/${consorcioId}/unidades/edit/${id}`)
     }
 
     const handleAdd = () => {
-        // return navigate(`/consorcios/add`)
+        return navigate(`/consorcios/${consorcioId}/unidades/add`)
     };
 
     const handleRemove = (id) => {
@@ -51,6 +51,11 @@ export const Unidades = () => {
                     >
                         Unidades de "{consorcio.nombre}"
                     </Typography>
+                </Grid>
+                <Grid item>
+                    <Button variant="contained" onClick={handleAdd}>
+                        Agregar
+                    </Button>
                 </Grid>
             </Grid>
         </Box>

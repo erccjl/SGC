@@ -1,5 +1,5 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material'
-import { useForm, Controller, useFormContext } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useTheme } from '@emotion/react';
@@ -128,7 +128,7 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                     </Grid>
                     <Grid item>
                         <Button variant="contained"
-                            color="success"
+                            color="primary"
                             onClick={handleSubmit(onSubmit)}
                             startIcon={<SaveIcon />}>
                             Guardar

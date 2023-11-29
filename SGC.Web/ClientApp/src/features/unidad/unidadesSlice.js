@@ -4,7 +4,7 @@ const initialStateUnidad = {
     id: 0,
     codigo: '',
     grupo: '',
-    porcentaje: '',
+    porcentaje: 0,
     tipoGrupo: 1, //Piso, debe depende del tipo de consorcio
     tipoUnidad: 1, //Departamento, tambien depende del tipo de consorcio
     consorcioId: 0
