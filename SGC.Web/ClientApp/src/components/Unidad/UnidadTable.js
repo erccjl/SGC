@@ -1,5 +1,6 @@
 import { IconButton, Paper, TableCell, TableRow, Tooltip } from '@mui/material';
 import { getUnidadGrupoNombre } from '../../utils/castEnum';
+import { formatNumber } from '../../utils/formatNumber';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PropTypes from 'prop-types';
@@ -14,16 +15,16 @@ const headCells = [
         label: 'Código',
     },
     {
-        id: 'porcenje',
-        numeric: false,
-        disablePadding: false,
-        label: 'Porcentaje',
-    },
-    {
         id: 'grupo',
         numeric: false,
         disablePadding: false,
         label: 'Grupo',
+    },
+    {
+        id: 'porcenje',
+        numeric: false,
+        disablePadding: false,
+        label: 'Porcentaje',
     },
 ];
 
@@ -47,8 +48,8 @@ export const UnidadTable = (props) => {
                 key={row.id}
             >
                 <TableCell padding="normal"> {row.codigo}</TableCell>
-                <TableCell>{row.porcentaje}</TableCell>
                 <TableCell>{getUnidadGrupoNombre(row.grupo)}</TableCell>
+                <TableCell>{formatNumber(row.porcentaje)}</TableCell>
                 <TableCell>
                     <Tooltip title='Editar' placement="top">
                         <IconButton onClick={e => handleEdit(row.id)}>

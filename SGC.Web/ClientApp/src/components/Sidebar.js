@@ -15,7 +15,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         flexGrow: 1,
         padding: theme.spacing(3),
-        backgroundColor: '#F8F8F8',
+        backgroundColor: '#E8E8E8',
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,

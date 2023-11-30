@@ -24,7 +24,7 @@ export const Unidades = () => {
     };
 
     const handleRemove = (id) => {
-        // console.log('eliminar ', id)
+        console.log('eliminar ', id)
     }
 
     const goBack = () => {
@@ -32,7 +32,10 @@ export const Unidades = () => {
     }
 
     useEffect(() => {
-        dispatch(getUnidadesByConsorcioIdApi(consorcioId));
+        if (consorcio.id !== 0)
+            dispatch(getUnidadesByConsorcioIdApi(consorcioId));
+        else
+            goBack();
     }, []);
 
     return (<>
@@ -49,7 +52,7 @@ export const Unidades = () => {
                         id="tableTitle"
                         component="div"
                     >
-                        Unidades de "{consorcio.nombre}"
+                        Unidades de  <b>{consorcio.nombre}</b>
                     </Typography>
                 </Grid>
                 <Grid item>
