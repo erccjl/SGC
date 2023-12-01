@@ -1,9 +1,11 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material'
-import { useForm, Controller, useFormContext } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useTheme } from '@emotion/react';
 import { TextArea } from '../TextArea';
+import CancelIcon from '@mui/icons-material/Cancel';
+import SaveIcon from '@mui/icons-material/Save';
 
 const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
     const theme = useTheme();
@@ -119,14 +121,16 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                     <Grid item>
                         <Button variant="contained"
                             color='error'
-                            onClick={x => handleCancel()}>
+                            onClick={x => handleCancel()}
+                            startIcon={<CancelIcon />}>
                             Cancelar
                         </Button>
                     </Grid>
                     <Grid item>
                         <Button variant="contained"
-                            color="success"
-                            onClick={handleSubmit(onSubmit)}>
+                            color="primary"
+                            onClick={handleSubmit(onSubmit)}
+                            startIcon={<SaveIcon />}>
                             Guardar
                         </Button>
                     </Grid>

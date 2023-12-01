@@ -1,30 +1,30 @@
-import Paper from '@mui/material/Paper';
-import { IconButton, TableCell, TableRow, Tooltip } from '@mui/material';
+import { IconButton, Paper, TableCell, TableRow, Tooltip } from '@mui/material';
+import { getUnidadGrupoNombre } from '../../utils/castEnum';
+import { formatNumber } from '../../utils/formatNumber';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ControlPoint from '@mui/icons-material/ControlPoint';
-import { getConsorcioTipoNombre } from '../../utils/castEnum';
+import PropTypes from 'prop-types';
 import { CustomTable } from '../Table/CustomTable';
 import { styled } from '@mui/material/styles';
 
 const headCells = [
     {
-        id: 'nombre',
+        id: 'codigo',
         numeric: false,
         disablePadding: false,
-        label: 'Nombre',
+        label: 'Código',
     },
     {
-        id: 'direccion',
+        id: 'grupo',
         numeric: false,
         disablePadding: false,
-        label: 'Dirección',
+        label: 'Grupo',
     },
     {
-        id: 'tipo',
+        id: 'porcenje',
         numeric: false,
         disablePadding: false,
-        label: 'Tipo',
+        label: 'Porcentaje',
     },
 ];
 
@@ -38,7 +38,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, handleAddUnits }) {
+export const UnidadTable = (props) => {
+    const { unidades, handleEdit, handleRemove } = props;
 
     const getRow = (row) => {
         return (
@@ -46,9 +47,9 @@ export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, h
                 tabIndex={-1}
                 key={row.id}
             >
-                <TableCell padding="normal"> {row.nombre}</TableCell>
-                <TableCell>{row.direccion}</TableCell>
-                <TableCell>{getConsorcioTipoNombre(row.tipo)}</TableCell>
+                <TableCell padding="normal"> {row.codigo}</TableCell>
+                <TableCell>{getUnidadGrupoNombre(row.grupo)}</TableCell>
+                <TableCell>{formatNumber(row.porcentaje)}</TableCell>
                 <TableCell>
                     <Tooltip title='Editar' placement="top">
                         <IconButton onClick={e => handleEdit(row.id)}>
@@ -60,11 +61,6 @@ export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, h
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>
-                    <Tooltip title='Agregar Unidades' placement="top">
-                        <IconButton onClick={e => handleAddUnits(row.id)}>
-                            <ControlPoint />
-                        </IconButton>
-                    </Tooltip>
                 </TableCell>
             </StyledTableRow>
         );
@@ -72,7 +68,13 @@ export default function ConsorcioTable({ consorcios, handleEdit, handleRemove, h
 
     return (
         <Paper sx={{ width: '100%', mb: 2 }}>
-            <CustomTable items={consorcios} getRow={getRow} headCells={headCells} />
+            <CustomTable items={unidades} getRow={getRow} headCells={headCells} />
         </Paper>
     );
 }
+
+UnidadTable.propTypes = {
+    unidades: PropTypes.array.isRequired,
+    handleEdit: PropTypes.func.isRequired,
+    handleRemove: PropTypes.func.isRequired
+};
