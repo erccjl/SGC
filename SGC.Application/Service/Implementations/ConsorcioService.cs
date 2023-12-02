@@ -68,14 +68,13 @@ namespace SGC.Application.Service
 
             var validator = new ConsorcioValidator();
             var result = await validator.ValidateAsync(dto);
-
             validations.Add((result.IsValid, string.Join(Environment.NewLine, result.Errors.Select(x => $"Campo {x.PropertyName} invalido. Error: {x.ErrorMessage}"))));
 
             var existConsorcio = _repository.GetFiltered(x => x.Id != id && x.Nombre == dto.Nombre).Any();
             validations.Add((!existConsorcio, "Ya existe un consorcio con el mismo nombre"));
 
             return (isValid: validations.All(x => x.isValid),
-                message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
+                    message: string.Join(Environment.NewLine, validations.Where(x => !x.isValid).Select(x => x.message)));
         }
 
         public async Task<List<ConsorcioDto>> GetAll()

@@ -24,6 +24,7 @@ export const unidadesSlice = createSlice({
         },
         editUnidad: (state, action) => {
             const { id, updatedUnidad } = action.payload;
+            console.log(id, updatedUnidad)
             const existingUnidad = state.unidades.find(c => c.id === id);
             if (existingUnidad)
                 Object.assign(existingUnidad, updatedUnidad);
@@ -36,9 +37,9 @@ export const unidadesSlice = createSlice({
 
 export const { setUnidades, addUnidad, editUnidad, removeUnidad } = unidadesSlice.actions;
 export const selectUnidades = state => state.unidades.unidades;
-export const selectUnidad = (state, id) => {
-    var unidad = state.unidades.unidades.find(c => c.id == id);
-    return unidad ? unidad : initialStateUnidad;
+export const selectUnidad = (state, id, consorcioId) => {
+    var unidad = state.unidades.unidades.find(c => c.id == id && c.consorcioId == consorcioId);
+    return unidad ? unidad : {...initialStateUnidad, consorcioId: consorcioId};
 };
 
 export default unidadesSlice.reducer;
