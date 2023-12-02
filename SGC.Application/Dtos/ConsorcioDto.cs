@@ -1,5 +1,4 @@
-﻿using SGC.Domain.Entities;
-using SGC.Domain.Enums;
+﻿using SGC.Domain.Enums;
 
 namespace SGC.Application.Dtos
 {

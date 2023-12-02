@@ -5,20 +5,18 @@ namespace SGC.Domain
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        TEntity Add(TEntity item);
+        Task<TEntity> Add(TEntity item);
 
-        void Remove(TEntity item);
+        Task<TEntity> Update(TEntity item);
 
-        TEntity Update(TEntity item);
+        Task<TEntity> Get(int id);
 
-        TEntity Get(int id);
-
-        IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAll();
 
         IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter);
 
-        IEnumerable<T> ExecuteQuery<T>(string sqlQuery, params object[] parameters);
+        Task<IEnumerable<T>> ExecuteQuery<T>(string sqlQuery, params object[] parameters);
 
-        void Save();
+        Task Save();
     }
 }

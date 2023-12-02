@@ -1,5 +1,5 @@
 import { urls } from '../constants/api';
-import { addConsorcio, editConsorcio, setConsorcios } from '../features/consorcio/consorciosSlice';
+import { addConsorcio, editConsorcio, removeConsorcio, setConsorcios } from '../features/consorcio/consorciosSlice';
 import clientInstance from '../client';
 import { SuccessToast } from '../components/Toast/Toast';
 
@@ -12,24 +12,39 @@ export const getConsorciosApi = () => (dispatch) => {
         });
 }
 
-export const postConsorcioApi = (consorcio) => (dispatch) => {
-    clientInstance
-        .post(urls.postConsorcioAPI, consorcio)
-        .then(response => {
-            if (response.data) {
-                SuccessToast('Consorcio creado con éxito!');
-                dispatch(addConsorcio(response.data));
-            }
-        })
+export const postConsorcioApi = (consorcio) => async (dispatch) => {
+    const response = await clientInstance
+        .post(urls.postConsorcioAPI, consorcio);
+
+    if (response.status == 200) {
+        SuccessToast('Consorcio creado con éxito!');
+    }
 }
 
-export const putConsorcioApi = (consorcio) => (dispatch) => {
-    clientInstance
-        .post(urls.putConsorcioAPI, consorcio)
-        .then(response => {
-            if (response.data){
-                SuccessToast('Consorcio actualizado con éxito!');
-                dispatch(editConsorcio(response.data));
-            }
-        })
+export const putConsorcioApi = (consorcio, consorcioId) => async (dispatch) => {
+    const response = await clientInstance
+        .put(`${urls.putConsorcioAPI}/${consorcioId}`, consorcio);
+
+    if (response.status == 200) {
+        SuccessToast('Consorcio actualizado con éxito!');
+    }
+}
+
+export const putActivateConsorcioApi = (consorcioId) => async (dispatch) => {
+    const response = await clientInstance
+        .put(`${urls.putConsorcioAPI}/${consorcioId}/activate`);
+
+    if (response.status == 200) {
+        SuccessToast('Consorcio activado con éxito!');
+    }
+}
+
+export const putInactivateConsorcioApi = (consorcioId) => async (dispatch) => {
+    const response = await clientInstance
+        .put(`${urls.putConsorcioAPI}/${consorcioId}/inactivate`);
+
+    if (response.status == 200) {
+        dispatch(removeConsorcio(consorcioId));
+        SuccessToast('Consorcio eliminado con éxito!');
+    }
 }

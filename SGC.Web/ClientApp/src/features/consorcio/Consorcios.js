@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectConsorcios } from './consorciosSlice';
+import { selectConsorcios  } from './consorciosSlice';
 import { Alert, Box, Button, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getConsorciosApi } from '../../services/consorcio';
+import { getConsorciosApi, putInactivateConsorcioApi } from '../../services/consorcio';
 import ConsorcioTable from '../../components/Consorcio/ConsorcioTable';
 
 const Consorcios = () => {
@@ -19,16 +19,20 @@ const Consorcios = () => {
         return navigate(`/consorcios/add`)
     };
 
-    const handleRemove = (id) => {
-        console.log('eliminar ', id)
+    const handleRemove = async (id) => {
+        await dispatch(putInactivateConsorcioApi(id));
     }
 
     const handleAddUnits = (id) => {
         return navigate(`/consorcios/${id}/unidades`);
     }
 
-    useEffect(() => {
+    const getConsorcios = () => {
         dispatch(getConsorciosApi());
+    }
+
+    useEffect(() => {
+        getConsorcios();
     }, []);
 
     return (

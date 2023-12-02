@@ -11,11 +11,11 @@ export const Consorcio = () => {
     const navigate = useNavigate();
     const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
 
-    const handleSave = (consorcio) => {
+    const handleSave = async (consorcio) => {
         if (consorcioId)
-            dispatch(putConsorcioApi(consorcio));
+            await dispatch(putConsorcioApi(consorcio, consorcioId));
         else
-            dispatch(postConsorcioApi(consorcio));
+            await dispatch(postConsorcioApi(consorcio));
         goBack();
     }
 

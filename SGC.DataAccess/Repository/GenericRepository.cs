@@ -18,60 +18,47 @@ namespace SGC.DataAccess.Repository
             _dbSet = _context.Set<TEntity>();
         }
 
-        public TEntity Add(TEntity item)
+        public async Task<TEntity> Add(TEntity item)
         {
             _dbSet.Add(item);
-            Save();
+            await Save();
             return item;
         }
 
-        public TEntity Update(TEntity item)
+        public async Task<TEntity> Update(TEntity item)
         {
-            _dbSet.Attach(item);
+            var localEntity = _dbSet.Local.FirstOrDefault(x => x.Id == item.Id);
+            if (localEntity != null)
+                _context.Entry(localEntity).State = EntityState.Detached;
             _context.Entry(item).State = EntityState.Modified;
-            Save();
+            await Save();
             return item;
         }
 
-        public TEntity Get(int id)
+        public async Task<TEntity> Get(int id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
-            return _dbSet.ToList();
+            return await _dbSet.ToListAsync();
         }
 
-        public virtual IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter)
+        public IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> filter)
         {
             return _dbSet.Where(filter);
         }
 
         //TODO: Validar ya que es una sql query
-        public IEnumerable<T> ExecuteQuery<T>(string sqlQuery, params object[] parameters)
+        public async Task<IEnumerable<T>> ExecuteQuery<T>(string sqlQuery, params object[] parameters)
         {
             return _context.Database.SqlQueryRaw<T>(sqlQuery, parameters);
         }
 
-        public void Remove(object id)
+        public async Task Save()
         {
-            TEntity item = _dbSet.Find(id);
-            Remove(item);
-        }
-
-        public virtual void Remove(TEntity item)
-        {
-            if (_context.Entry(item).State == EntityState.Detached)
-            {
-                _context.Attach(item);
-            }
-            _context.Remove(item);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
