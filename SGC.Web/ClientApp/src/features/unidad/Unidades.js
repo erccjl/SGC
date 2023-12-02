@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { selectUnidades } from "./unidadesSlice";
 import { selectConsorcio } from "../consorcio/consorciosSlice";
 import { useEffect } from "react";
-import { getUnidadesByConsorcioIdApi } from '../../services/unidad';
+import { getUnidadesByConsorcioIdApi, putInactivateUnidadApi } from '../../services/unidad';
 import { UnidadTable } from '../../components/Unidad/UnidadTable';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -23,8 +23,8 @@ export const Unidades = () => {
         return navigate(`/consorcios/${consorcioId}/unidades/add`)
     };
 
-    const handleRemove = (id) => {
-        console.log('eliminar ', id)
+    const handleRemove = async (id) => {
+        await dispatch(putInactivateUnidadApi(id));
     }
 
     const goBack = () => {
@@ -73,6 +73,8 @@ export const Unidades = () => {
                     handleRemove={handleRemove} />)
                 : (<Alert severity="info">No hay Unidades cargadas</Alert>)}
         </Box>
+
+        <br />
 
         <Button
             variant="contained"

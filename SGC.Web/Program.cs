@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(typeof(ConsorcioProfile));
 
 
 builder.Services.AddScoped<IConsorcioService, ConsorcioService>();
+builder.Services.AddScoped<IUnidadService, UnidadService>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 
