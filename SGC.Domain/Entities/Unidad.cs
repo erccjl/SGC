@@ -6,7 +6,7 @@ namespace SGC.Domain.Entities
     {
         public string Codigo { get; set; }
         public string Grupo { get; set; }
-        public decimal Porcentage { get; set; }
+        public decimal Porcentaje { get; set; }
         public TipoGrupo TipoGrupo { get; set; }
         public TipoUnidad TipoUnidad { get; set; }
         public int ConsorcioId { get; set; }

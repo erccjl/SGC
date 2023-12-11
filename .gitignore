@@ -235,3 +235,4 @@ _Pvt_Extensions
 
 
 appsettings.json
+/SGC.Web/appsettings.Development.json

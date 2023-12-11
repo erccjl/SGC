@@ -230,7 +230,7 @@ namespace SGC.DataAccess.Migrations
                     b.Property<string>("Grupo")
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("Porcentage")
+                    b.Property<decimal>("Porcentaje")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("State")
