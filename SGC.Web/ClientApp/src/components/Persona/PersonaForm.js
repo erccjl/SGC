@@ -1,11 +1,10 @@
 import { useTheme } from '@emotion/react';
 import { Button, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import CancelIcon from '@mui/icons-material/Cancel';
 import SaveIcon from '@mui/icons-material/Save';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { personaValidationSchema } from '../../validations/validations';
 
 const persona = {
     email: '',
@@ -23,55 +22,6 @@ const persona = {
 export const PersonaForm = ({ handleSave, handleCancel }) => {
     const theme = useTheme();
 
-    const validationSchema = Yup.object().shape({
-        email: Yup.string()
-            .email('Formato invalido'),
-        celular: Yup.string(),
-        telefono: Yup.string(),
-        tipoPersona: Yup.boolean()
-            .required('El campo es obligatorio'),
-
-        //Persona Jurídica
-        razonSocial: Yup.string()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (!tipoPersona[0])
-                    return schema.required('El campo es obligatorio');
-                return schema;
-            }),
-        cuit: Yup.string()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (!tipoPersona[0])
-                    return schema.required('El campo es obligatorio');
-                return schema;
-            }),
-
-        //Persona Humana
-        nombre: Yup.string()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (tipoPersona[0])
-                    return schema.required('El campo es obligatorio');
-                return schema;
-            }),
-        apellido: Yup.string()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (tipoPersona[0])
-                    return schema.required('El campo es obligatorio');
-                return schema;
-            }),
-        documento: Yup.string()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (tipoPersona[0])
-                    return schema.required('El campo es obligatorio');
-                return schema;
-            }),
-        fechaNacimiento: Yup.date()
-            .when('tipoPersona', (tipoPersona, schema) => {
-                if (tipoPersona[0])
-                    return schema.required('El campo es obligatorio')
-                return schema
-            }),
-    });
-
     const {
         register,
         control,
@@ -79,7 +29,7 @@ export const PersonaForm = ({ handleSave, handleCancel }) => {
         watch,
         formState: { errors }
     } = useForm({
-        resolver: yupResolver(validationSchema),
+        resolver: personaValidationSchema(),
         defaultValues: persona
     });
 

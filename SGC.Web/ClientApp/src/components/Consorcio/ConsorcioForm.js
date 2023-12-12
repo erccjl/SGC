@@ -1,24 +1,13 @@
 import { Button, Divider, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 import { useTheme } from '@emotion/react';
 import { TextArea } from '../TextArea';
 import CancelIcon from '@mui/icons-material/Cancel';
 import SaveIcon from '@mui/icons-material/Save';
+import { consorcioValidationSchema } from '../../validations/validations';
 
 const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
     const theme = useTheme();
-
-    const validationSchema = Yup.object().shape({
-        nombre: Yup.string()
-            .required('El campo es obligatorio'),
-        descripcion: Yup.string(),
-        direccion: Yup.string()
-            .required('El campo es obligatorio'),
-        tipo: Yup.number()
-            .required('El campo es obligatorio')
-    });
 
     const {
         register,
@@ -26,7 +15,7 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
         handleSubmit,
         formState: { errors }
     } = useForm({
-        resolver: yupResolver(validationSchema),
+        resolver: consorcioValidationSchema(),
         defaultValues: consorcio
     });
 

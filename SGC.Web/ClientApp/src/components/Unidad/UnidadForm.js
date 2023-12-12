@@ -1,33 +1,21 @@
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import CancelIcon from '@mui/icons-material/Cancel';
 import SaveIcon from '@mui/icons-material/Save';
 import PropTypes from 'prop-types';
+import { unidadValidationSchema } from '../../validations/validations';
 
 export const UnidadForm = (props) => {
     const { unidad, handleSave, handleCancel } = props;
     const theme = useTheme();
-
-    const validationSchema = Yup.object().shape({
-        codigo: Yup.string()
-            .required('El campo es obligatorio'),
-        porcentaje: Yup.number()
-            .transform((value) => Number.isNaN(value) ? null : value)
-            .typeError('El campo debe ser un número')
-            .required('El campo es obligatorio')
-            .min(0, 'Valor minimo 0')
-            .max(100, 'Valor máximo 100'),
-    });
 
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm({
-        resolver: yupResolver(validationSchema),
+        resolver: unidadValidationSchema(),
         defaultValues: unidad
     });
 
