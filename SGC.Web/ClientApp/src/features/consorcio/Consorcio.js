@@ -9,7 +9,7 @@ export const Consorcio = () => {
     const dispatch = useDispatch();
     let { consorcioId } = useParams();
     const navigate = useNavigate();
-    const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
+    const consorcio = useSelector(state => selectConsorcio(state, Number(consorcioId)));
 
     const handleSave = async (consorcio) => {
         if (consorcioId)

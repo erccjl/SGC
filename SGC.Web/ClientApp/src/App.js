@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import 'dayjs/locale/es';
 
 const theme = createTheme({
   palette: {
@@ -41,7 +44,6 @@ const theme = createTheme({
   },
 });
 
-
 export default class App extends Component {
   static displayName = App.name;
 
@@ -49,8 +51,10 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <ThemeProvider theme={theme}>
+          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
             <Layout />
             <ToastContainer autoClose={false} draggable={false} />
+          </ LocalizationProvider>
         </ThemeProvider>
       </Provider>
     );

@@ -37,7 +37,7 @@ export const consorciosSlice = createSlice({
 export const { setConsorcios, addConsorcio, editConsorcio, removeConsorcio } = consorciosSlice.actions;
 export const selectConsorcios = state => state.consorcios.consorcios;
 export const selectConsorcio = (state, id) => {
-    var consorcio = state.consorcios.consorcios.find(c => c.id == id);
+    var consorcio = state.consorcios.consorcios.find(c => c.id === id);
     return consorcio ? consorcio : initialStateConsorcio;
 };
 

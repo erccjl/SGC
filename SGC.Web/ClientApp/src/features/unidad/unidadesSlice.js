@@ -38,8 +38,8 @@ export const unidadesSlice = createSlice({
 export const { setUnidades, addUnidad, editUnidad, removeUnidad } = unidadesSlice.actions;
 export const selectUnidades = state => state.unidades.unidades;
 export const selectUnidad = (state, id, consorcioId) => {
-    var unidad = state.unidades.unidades.find(c => c.id == id && c.consorcioId == consorcioId);
-    return unidad ? unidad : {...initialStateUnidad, consorcioId: consorcioId};
+    var unidad = state.unidades.unidades.find(c => c.id === id && c.consorcioId === consorcioId);
+    return unidad ? unidad : { ...initialStateUnidad, consorcioId: consorcioId };
 };
 
 export default unidadesSlice.reducer;

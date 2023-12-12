@@ -47,7 +47,7 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                     id='nombre'
                     name='nombre'
                     label='Nombre'
-                    error={errors.nombre ? true : false}
+                    error={!!errors.nombre}
                     {...register('nombre')}
                     margin='dense' />
                 <Typography variant='inherit' color={theme.palette.error.main}>
@@ -63,7 +63,7 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                     id='descripcion'
                     name='descripcion'
                     label='Descripción'
-                    error={errors.descripcion ? true : false}
+                    error={!!errors.descripcion}
                     {...register('descripcion')}
                     margin='dense' />
                 <Typography variant='inherit' color={theme.palette.error.main}>
@@ -79,7 +79,7 @@ const ConsorcioForm = ({ consorcio, handleSave, handleCancel }) => {
                     id='direccion'
                     name='direccion'
                     label='Dirección'
-                    error={errors.direccion ? true : false}
+                    error={!!errors.direccion}
                     {...register('direccion')}
                     margin='dense' />
                 <Typography variant='inherit' color={theme.palette.error.main}>

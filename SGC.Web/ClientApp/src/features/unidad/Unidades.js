@@ -13,7 +13,7 @@ export const Unidades = () => {
     const navigate = useNavigate();
     let { consorcioId } = useParams();
     const unidades = useSelector(selectUnidades);
-    const consorcio = useSelector(state => selectConsorcio(state, consorcioId));
+    const consorcio = useSelector(state => selectConsorcio(state, Number(consorcioId)));
 
     const handleEdit = (id) => {
         return navigate(`/consorcios/${consorcioId}/unidades/edit/${id}`)
